@@ -9,7 +9,7 @@ export class WeatherservicesService {
   private weatherSubject = new BehaviorSubject<any>(null);
   weatherData$ = this.weatherSubject.asObservable();
 
-  private api_key = 'aa601ded82f50466597a030da31b4de4';
+  private api_key = '051e944f2380b87ecf1e12e51e5cba92';
 
   constructor(private http: HttpClient) {}
 
