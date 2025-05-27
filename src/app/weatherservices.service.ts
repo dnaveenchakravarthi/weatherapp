@@ -14,7 +14,7 @@ export class WeatherservicesService {
   constructor(private http: HttpClient) {}
 
   weatherfetch(location: string) {
-    const url = `http://api.weatherstack.com/current?access_key=${this.api_key}&query=${location}`;
+    const url = `https://api.weatherstack.com/current?access_key=${this.api_key}&query=${location}`;
     this.http.get(url).subscribe(
       data => this.weatherSubject.next(data),
       error => {
