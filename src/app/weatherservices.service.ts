@@ -1,23 +1,26 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WeatherservicesService {
+  private weatherSubject = new BehaviorSubject<any>(null);
+  weatherData$ = this.weatherSubject.asObservable();
 
-   
-  private apikey='e5152e335e134edca9982150250402';
-  private baseurl='http://api.weatherapi.com/v1/current.json';
-  constructor() { }
-  weatherfetch(sete:string): Promise<any>{
-   return  fetch(`${this.baseurl}?key=${this.apikey}&q=${sete}`)
-    .then(response=>{
-     return  response.json()
-    })
-    .then (data=>data
-       
-      )
-       
+  private api_key = 'aa601ded82f50466597a030da31b4de4';
 
+  constructor(private http: HttpClient) {}
+
+  weatherfetch(location: string) {
+    const url = `http://api.weatherstack.com/current?access_key=${this.api_key}&query=${location}`;
+    this.http.get(url).subscribe(
+      data => this.weatherSubject.next(data),
+      error => {
+        console.error('Error fetching weather:', error);
+        this.weatherSubject.next({ error: 'Failed to fetch data' });
+      }
+    );
   }
 }

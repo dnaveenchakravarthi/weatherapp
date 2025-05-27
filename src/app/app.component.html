@@ -1,14 +1,35 @@
-<div class="main">
-  <div class="container mt-4">
-    <h1>{{title | titlecase}}</h1>
-     <input  class="mb-2"placeholder="Enter your api in the text" [(ngModel)]="sete">
-     <button (click)="set()">Click Me </button>
-      
-    <div *ngIf="art" >
-      <h1>{{name}}</h1>
-      <h2>{{temp}}</h2>
-      <h3>{{wind}}</h3>
-       <img src="{{image}}">
-    </div>
-  </div>
-</div>
+<nav>
+  <a routerLink="/home">Home</a> 
+  <a routerLink="/base">Base</a>
+</nav><router-outlet></router-outlet>
+<style>
+  nav{
+    position: sticky;
+    top:0px;
+    z-index: 100%;
+    margin:0px;
+    height: 50px;
+    width:100%;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  nav a{
+    text-decoration: none;
+    font-size: 30px;
+    color:red;
+    margin: 30px;
+     
+       
+       
+     
+  }
+  a:hover{
+     background-color: cornsilk;
+  }
+</style>
+
+
+ 
+ 
